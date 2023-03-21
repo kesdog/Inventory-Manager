@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="Inventory_Manager.Views.New_Component_View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Inventory_Manager.Views" xmlns:viewmodels="clr-namespace:Inventory_Manager.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:NewComponentViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Width="800" Height="450">
+        <StackPanel x:Name="main_info" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0">
+            <StackPanel Orientation="Horizontal">
+                <Label>Type: </Label>
+                <ComboBox x:Name="selected_type" Width="80" SelectedValue="{Binding Type}">
+                    <ComboBoxItem Content="CPU"/>
+                    <ComboBoxItem Content="GPU"/>
+                    <ComboBoxItem Content="MOBO"/>
+                    <ComboBoxItem Content="PSU"/>
+                    <ComboBoxItem Content="RAM"/>
+                    
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <Label>Cost:</Label>
+                <TextBox x:Name="cost_txtbx" Text="{Binding Cost}" Width="60" Style="{StaticResource base_txtbx_style}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <RadioButton Content="New"  Command="{Binding getSelected}" CommandParameter="New"/>
+                <RadioButton Content="Used"  Command="{Binding getSelected}" CommandParameter="Used" Margin="5,0,0,0"/>
+            </StackPanel>
+            
+
+
+        </StackPanel>
+        <ContentPresenter Width="600" Height="300" HorizontalAlignment="Right" Content="{Binding CompType}"/>
+    
+        <Button x:Name="back_btn" Content="Back" Command="{Binding nav_back}" Width="50" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,20" Style="{StaticResource nav_styling}"/>
+    </Grid>
+</UserControl>
